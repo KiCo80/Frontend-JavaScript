@@ -1,0 +1,91 @@
+//Feladatok:
+// IF/1. feladat:
+//Döntsük el egy számról, hogy a szám pozitív, negatív vagy 0?
+
+szam = Number(prompt(`Kérek egy számot! Szám=`))
+if (szam > 0) {
+    alert(`A szám poitív.`)
+} else if (szam < 0) {
+    alert(`A szám negatív.`)
+} else {
+    alert(`A szám 0.`)
+}
+
+//IF/2. feladat:
+//Váltsunk Kilót Fontba, prompt segítségével kérjünk be egy értéket, 
+//váltsuk át az értéket Fontba. (1 kg = 2.20462 Font)
+
+suly = Number(prompt(`Kérem a súlyt kg-ban! Súly=`))
+alert(`A súly átszámítva= ${suly * 2.20462} font.`)
+
+//IF/3. feladat:
+//Vizsgáljuk meg, hogy egy mondat helyes-e. Helyes a mondat, ha nagy 
+//betűvel kezdődik és írásjel („.”,”!”,”?”) van a végén. Ha valamelyik 
+//hiányzik, azt jelezzük.
+
+mondat = prompt(`Kérek egy mondatot!`)
+if (mondat[0] === mondat[0].toUpperCase() && mondat.slice(-1) === "." || mondat.slice(-1) === "!" || mondat.slice(-1) === "?") {
+    alert(`A mondat helyes!`)
+} else {
+    alert(`A mondat nem helyes, mert nem nagybetűvel kezdődik és nincs írásjel a végén!`)
+}
+
+//IF/4. feladat:
+
+let szam2 = Number(prompt(`Kérek egy számot 1 és 100 között. Szám=`))
+if (szam2 > 1 && szam2 < 100) {
+    if (szam2 % 10 === 0) {
+        alert(`A szám osztható 10-zel.`)
+    } else {
+        alert(`A szám nem osztható 10-zel.`)
+    }
+} else {
+    alert(`Rossz számot adtál meg!`)
+}
+
+//Függvény/1. feladat:
+//Csináljunk abszolút érték függvényt absolut() néven. Egy bemeneti 
+//paraméter, adjuk vissza egy szám abszolút értékét.
+
+function absolut(szam1) {
+    if (szam1 < 0) {
+        return szam1 * (-1)
+    } else {
+        return szam1
+    }
+}
+
+let szam1 = Number(prompt(`Kérek egy számot!`))
+alert(`A szám abszolút értéke= ${absolut(szam1)}`)
+
+//Függvény/2. feladat:
+//Csináljunk egy compare() függvényt, bemenet két szám, adjuk vissza 
+//melyik a nagyobb, ha egyenlő akkor adjuk vissza az első számot.
+
+function compare(szam3, szam4) {
+    if (szam1 > szam2) {
+        return szam1
+    } else {
+        return szam2
+    }
+}
+alert(compare(2, 4))
+
+//Függvény/3. feladat:
+//Csináljunk számológép függvényt. 
+//a. Bemeneti paraméterek: 2 szám és egy művelet ( + , - , * , / )
+//b. A számológép függvény végezze el a műveletet majd adja vissza az 
+//eredményt.
+//c. 0-val osztást ne engedjünk, ekkor a függvény írjon ki hibát 
+//(0-val osztás nem lehetséges)
+//d. Használjuk fel a korábban megcsinált absolut() függvényt, 
+//ha a művelet paraméternek „abs” van megadva, akkor a számológép 
+//függvény adja vissza az első szám abszolút értékét az absolut() 
+//függvény segítségével. Ebben az esetben a második szám értéke 
+//lényegtelen.
+//e. Ha a művelet „?”, akkor adjuk vissza a nagyobb számot, ehhez 
+//használjuk fel a korábban megcsinált compare() függvényt.
+
+function szamologep() {
+
+}
