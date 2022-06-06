@@ -1,0 +1,185 @@
+console.log(`Hello KiCo!`)
+
+/*
+
+function absolut(szam) { //()-be kerül a bementi paraméter
+    if (szam > 0) {
+        return szam
+    } else {
+        return szam * (-1)
+    }
+}
+alert(absolut(-5)) // visszaadja a szám abszolútértékét.
+
+// Bekérünk két számot, eldöntjük, hogy melyik a nagyobb
+
+function compare(szam1, szam2) {
+    if (szam1 > szam2) {
+        return szam1
+    } else {
+        return szam2
+    }
+}
+alert(compare(2, 3))
+
+// számológép feladat:
+// bemegy 2 szám és egy művelet
+function szamologep(szam3, szam4, muvelet) {
+    // + , - , * , /
+    if (muvelet === "+") {    // a + jel stringként megy be, így "" közé kerül!
+        return szam3 + szam4
+    } else if (muvelet === "-") {
+        return szam3 - szam4
+    } else if (muvelet === "*") {
+        return szam3 * szam4
+    } else if (muvelet === "/") {
+        if (szam4 === 0) {
+            return "0-val nem lehet osztani!"
+        } else {
+            return szam3 / szam4
+        }
+    } else if (muvelet === "abs") {
+        return absolut(szam3)
+    } else if (muvelet === "?") {
+        return compare(szam3, szam4)
+    }
+}
+
+alert(szamologep(4, 5, "+"))
+alert(szamologep(4, 5, "-"))
+alert(szamologep(4, 5, "*"))
+alert(szamologep(4, 0, "/")) //0-val nem lehet osztani, a szám megvizsgálása miatt megy a figyelmeztető üzenet.
+alert(absolut(-7, 8, "abs")) // az abszolútérték függvény csak egy számmal működik, a másodikat figyelmen kívül hagyja. Elég csak egy számot beírni.
+alert(compare(3, 8, "?"))
+
+
+// Tömbök, listák
+let szamok = [1, 10, 20] // így tárolunk listába adatokat (mint pyhonban).
+let baratok = ["Laca", "Gacsa", "Baxi", "Sutyi", "Ördög", "Dugi"]
+let joe = ["Joe", "Doe", 34, baratok] //vegyes típusok, és a baátok lista egy listában
+console.log(szamok) // a tömb indexelve van, első elem a 0.
+console.log(baratok) //a tömb nevét érdemes többesszámmal írni, abból azonnal látszik, hogy tömbről van szó.
+console.log(joe) // Array(6)-ot ír ki, mert az egy további lista
+console.log(`A legjobb barátom`, baratok[0])
+console.log(`Ennyi barátom van: ${baratok.length}`) // a lista elemeinek darabszámát írja ki
+console.log(`Utolsó barátom a sorban: ${baratok[baratok.length - 1]}`) //a lista utolsó elemét írja ki
+// A baratok lista első indexű elemét kicseréljük Izé-re:
+baratok[1] = "Izé" //az első indexű elemet kicseréli "Izé"-re.
+console.log(`Gacsa cserélve Izére: ${baratok}`) //az új listánkban már Gacsa helyett Izé szerepel.
+
+
+
+function korSzamito(szulDatum) {
+    return most - szulDatum // A "most" egy globális változó, mert meghatároztuk az értékét a függvényen kívül, bárhol használhatjuk a programon belül.
+}                           // a "szulDatum" egy lokális változó, mert a függvényben hoztuk létre, függvényben van értéke, így csak itt használható.
+
+let most = 2021
+let szulEvek = [1980, 1982, 1981, 1953, 1958]
+let korok = [korSzamito(szulEvek[0]), korSzamito(szulEvek[1]), korSzamito(szulEvek[2]), korSzamito(szulEvek[3]), korSzamito(szulEvek[4])] //a függvényben megírt számítással kerülnek bele a tömbbe az életkorok
+console.log(korok)
+
+baratok = ["Laca", "Gacsa", "Baxi", "Sutyi", "Ördög"]
+// tömbhöz hozzáadás, az utolsó helyre:
+baratok.push("Dugi") // a tömb végére hozzáadja az új elemet
+console.log(`Új elem hozzáadva a lista végére: ${baratok}`)
+// tömb elejére történő hozzáadás:
+baratok.unshift("Izé")
+console.log(`Az első helyre beszúrtuk az új elemet: ${baratok}`)
+// tömb utolsó elemének eltávolítása:
+baratok.pop() //eltávolítja az utolsó elemet a tömbből
+
+let utolso = baratok.pop() //eltároljuk az utolsó eltávolított elemet
+console.log(`Eltávolított elem: ${utolso}`) //kiírjuk, hogy melyik elem lett eltávolítva a tömbből
+console.log(`Utolsó elem eltávolítva: ${baratok}`) // az eltávolított elem nélküli lista kiíratása
+// tömb első elemének eltávolítása:
+baratok.shift() // a tömb első elemét távolítja el
+console.log(`Első elem eltávolítva: ${baratok}`)
+
+// tömb eleme indexének lekérdezése:
+baxiIndex = baratok.indexOf("Baxi") //Baxi indexének elmentése változóba
+console.log(`Baxi indexe: ${baxiIndex}`)
+
+//keresés a listában:
+vanGacsa = baratok.includes("Gacsa") //igaz vagy hamis értéket ad vissza, eltároljuk egy változóba
+if (vanGacsa === true) {
+    console.log("Van Gacsa nevű barátom.")
+} else {
+    console.log("Nincs Gacsa nevű barátom.")
+}
+
+// tömb elemeinek megadása másképpen: (a sorok végére vessző kell)
+hans = [
+    "Hans",
+    "Müller",
+    35,
+    182,
+    84
+]
+// Hans testömegindexének kiszámítása: 3. index a magasság, 4. a tömeg
+hansTTI = hans[4] / ((hans[3] / 100) ** 2)
+console.log(`Hans testtömegindexe= ${hansTTI}`)
+
+*/
+
+// OBJEKTUMOK {}-ben vannak az adatok, az adatoknak tulajdonságaik vannak
+
+let hans = {
+    keresztNev: "Hans", // a tulajdonságnak ":"-tal adjuk meg az értékét!
+    vezetekNev: "Müller",
+    eletKor: 35,
+    magassag: 182,
+    suly: 84,
+
+    szulEv: function () { // metódus írása az objektumnak, kiszámolja Hans születési évét
+        return 2021 - this.eletKor //"this"-sel mondjuk meg, hogy az ebben az objektumban lévő életkort használja!
+    }
+}
+
+console.log(hans)
+
+console.log(hans.vezetekNev) // hans objektumból a vezetéknév kiíratása
+console.log(hans["vezetekNev"]) //hans objektumból vezetéknév kiíratása másik módszer
+
+// hozzáadás objektumhoz:
+hans["varos"] = "Frankfurt" //hozzáadjuk "hans" objektumhoz a "város" tulajdonságot "Frankfurt" értékkel
+console.log(hans)
+
+console.log(hans.szulEv()) // () kell mögé, mert metódust hívunk meg! A metódis színe zöld.
+
+// feladat: mappában a TTI feladat
+// 2 objektumot készíteni: Hans (Müller), Matti (Makela)
+// feltölteni: vezetéknév, életkor, magasság, súly
+// keresztNev, vezetekNev, eletKor, magassag, suly
+// ha ezek megvannak, akkor számoljuk ki mindkettő testtömegindexét!
+// Melyiknek nagyobb a TTI-je?
+let hansObj = {
+    keresztNev: "Hans",
+    vezeteknev: "Müller",
+    eletKor: 35,
+    magassag: 182,
+    suly: 84,
+
+    hansTTI: function () {
+        return this.suly / (this.magassag / 100) ** 2
+    }
+}
+
+let mattiObj = {
+    keresztNev: "Matti",
+    vezetekNev: "Makela",
+    eletkor: 42,
+    magassag: 191,
+    suly: 89,
+
+    mattiTTI: function () {
+        return this.suly / (this.magassag / 100) ** 2
+    }
+}
+console.log(`Hans TTI-je = ${hansObj.hansTTI()}`)
+console.log(`Matt TTI-je = ${mattiObj.mattiTTI()}`)
+
+if (hansObj.hansTTI() > mattiObj.mattiTTI()) {
+    console.log(`Hans TTI értéke (${hansObj.hansTTI()}) nagyobb, mint Matti TTI értéke (${mattiObj.mattiTTI()}), ennyivel = ${hansObj.hansTTI() - mattiObj.mattiTTI()}`)
+} else {
+    console.log(`Matti TTI értéke (${mattiObj.mattiTTI()}) nagyobb, mint Hans TTI értéke (${hansObj.hansTTI()}), ennyivel = ${mattiObj.mattiTTI() - hansObj.hansTTI()}`)
+}
