@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Függvények</title>
+</head>
+<body>
+    <h1>Függvények</h1>
+
+<script>
+    function hider() {
+        document.body.innerHTML = "";
+    }
+
+    function adder(a, b) {
+        return a + b;
+    }
+
+    function adder2(a = 1, b = 1) {
+        return a + b;
+    }
+
+    var name = 'Joe';
+    function test() {
+        var name = 'Jack';
+        document.write(name, '<br>');
+    }
+    test();
+    document.write(name, '<br>');
+	
+    // var helyett: let, const
+    const USERNAME = 'Root';
+   
+</script>
+</body>
+</html>
