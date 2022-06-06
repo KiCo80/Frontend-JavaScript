@@ -1,0 +1,262 @@
+console.log("Hello!")
+
+/* több soros komment
+bla bla
+bla bla bla
+*/
+// egysoros komment
+/*
+let nev = "KiCo"
+console.log(typeof (nev))
+nev = 20
+console.log(typeof (nev))
+nev = true
+console.log(typeof (nev))
+let ujNev
+console.log(typeof (ujNev))
+*/
+let eletKor = 41
+eletkor = 42 //a legutolsó értékadást fogja kiírni a program
+console.log(eletKor)
+
+const szuletesiEv = 1980 // a konstansként létrehozott változó értéke nem változhat meg.
+console.log(szuletesiEv)
+
+console.log(1 + 5)
+console.log(1 - 5)
+console.log(1 * 5)
+console.log(1 / 5)
+console.log(2 ** 4)
+console.log(9 % 7)
+
+
+const keresztNev = "Krisztián"
+const vezetekNev = "Fehér"
+//string konkatenáció
+console.log(vezetekNev + " " + keresztNev) //ezzel összefűzzük a vezetéknevet a keresztnévvel, köztük szóközzel.
+
+let x = 10
+x += 15 //el is menti az x változó új értékét
+console.log(x)
+x++ // 1-gyel megnöveli az x értékét. Ugyanaz, mint x+=1
+console.log(x)
+x-- //1-gyel csökkenti az x értékét. Ugyanaz, mint x-=1
+console.log(x)
+
+const a = 10
+const b = 30
+
+console.log(a < b) //igaz vagy hamis értéket ad vissza. Itt igaz.
+console.log(a >= b) // igaz vagy hamis értéket ad vissza. Itt hamis, mert 10 nem nagyobb egyenlő, mint 30.
+console.log(a === b) //összehasonlítja a két étréket, hogy ugyanazok-e. Pythonban == volt, itt, JavaScriptben ===.
+
+// Feladat 1:
+// Hans, Matt
+// testtömegindex=testtömeg(kg)/magasság*magasság(m)
+// Hans 78kg, 1.6m
+// Matt 90kg, 1.8m
+
+// 1. érték tárolása
+// 2. TTI számolás és tárolás
+// 3. írassuk ki mendkettejük TTI-ét!
+// 4. Hans-nak nagyobb-e a TTI-je?
+// 5. Kinek nagyobb a testtömegindexe és mennyivel?
+
+const HansSuly = 78
+const HansMagassag = 1.6
+const MattSuly = 90
+const MattMagassag = 1.8
+console.log("Hans testtömegindexe:")
+let htti = HansSuly / (HansMagassag * HansMagassag) // vagy HansMag**2
+console.log(htti)
+console.log("Matt testtömegindexe: ")
+let mtti = MattSuly / (MattMagassag * MattMagassag)
+console.log(mtti)
+console.log(htti > mtti)
+
+// egy console.log sorba több érték is kiíratható, vesszővel elválasztva.
+
+// stringek:
+
+const nev = "KiCo"
+const munka = "katona"
+const szulettem = 1980
+const mostaniEv = 2021
+
+const en = "Én " + nev + " vagyok, " + (mostaniEv - szulettem) + " éves, " + munka + "ként dolgozom."
+console.log(en)
+// máshogyan történő kiíratás:
+const enMashogy = `Én ${nev} vagyok, ${mostaniEv - szulettem} éves ${munka}`
+console.log(enMashogy)
+
+console.log("Ez \negy \ntöbb \nsoros \nstring") //kézi sortüörés, mint pythonban
+console.log(`Ez
+egy
+több
+soros
+string`)
+
+let szoveg = "Hello KiCo!"
+console.log(szoveg.length) //szöveg hány karakterből áll
+console.log(`Szöveg hossza: ${szoveg.length}`)
+console.log(`Szöveg nagybetűsítve: ${szoveg.toUpperCase()}`) //minden karaktert nagybetűssé lesz
+console.log(`Szöveg kisbetűsítve: ${szoveg.toLowerCase()}`) //minden karaktert kisbetűssé teszi.
+console.log(`Szöveg első karaktere: ${szoveg[0]}`)// a szöveg első karakterének megjelenítése.
+console.log(`Slice: ${szoveg.slice(0, 5)}`) //a szöveg meghatározott karaktereinek kiíratása (0-tól 5-ig)
+console.log(`Slice: ${szoveg.slice(6, 11)}`) //6-tól 11. karakterig kiíratás
+console.log(`Slice: ${szoveg.slice(6)}`) //6. karaktertől írja ki a szöveget
+console.log(`Slice: ${szoveg.slice(-1)}`) //utolsó karaktert írja ki
+console.log(`Replace: ${szoveg.replace("l", "j")}`) //az l betűt j betűre cseréli ki. Első karakter: amit cserélünk, második karakter: amire cserélünk. Csak az első előforduló karaktert cseréli ki.
+console.log(`Replace: ${szoveg.replaceAll("l", "j")}`) // az összes l betűt lecseréi j-re.
+console.log(szoveg) // az eredeti szöveget írja ki
+szoveg = szoveg.replaceAll("l", "j") //a szoveg változóban történt változtatás mentése
+console.log(szoveg) //a megváltozott szöveget írja ki.
+console.log(`Karakter helye: ${szoveg.indexOf("e")}`) //egy adott karakter indexét adja vissza
+
+//feltételek:
+/*
+if (feltétel) {
+    //igaz ág
+} else {
+    //hamis ág
+}
+*/
+if (10 > 5) {
+    console.log("10 nagyobb, mint 5.")
+} else {
+    console.log("10 nem nagyobb, mint 5.")
+}
+
+let kor = 10
+if (kor >= 17) {
+    console.log("Most már szerezhetsz jogosítványt. 😊") //Windows+. emoji beszúrása
+} else {
+    console.log(`Még ${17 - kor} év van hátra a jogosítványszerzéshez. 😜`)
+}
+
+// testtömegindexes feladat az 5. ponttal kiegészítve:
+// 5. Kinek nagyobb a testtömegindexe és mennyivel?
+const HansS = 78
+const HansM = 1.6
+const MattS = 90
+const MattM = 1.8
+console.log("Hans testtömegindexe:")
+let htti2 = HansS / (HansM * HansM) // vagy HansMag**2
+console.log(htti2)
+console.log("Matt testtömegindexe: ")
+let mtti2 = MattS / (MattM * MattM)
+console.log(mtti2)
+console.log(htti2 > mtti2)
+if (htti2 > mtti2) {
+    console.log(`Hans testömegindexe nagyobb ${htti2 - mtti2} -vel.`)
+} else {
+    console.log(`Matt testtömegindexe nagyobb ${mtti2 - htti2} -vel.`)
+}
+
+// típuskonverzió:
+
+let evSzam2 = "2021"
+console.log(`Érték: ${evSzam2}, Típus: ${typeof evSzam2}`) //változó értékének és típusának kiíratása
+evSzam2 = Number(evSzam2) // átalakítjuk számmá a szöveget ("2021") Csak szövegként megadott számot lehet!!!
+console.log(`Érték: ${evSzam2}, Típus: ${typeof evSzam2}`)
+evSzam2 = String(evSzam2) // visszaalakítjuk stringgé. Függvényeket nagy kezdőbetűvl írunk!!!
+console.log(`Érték: ${evSzam2}, Típus: ${typeof evSzam2}`)
+
+const kor3 = 41
+console.log("Én " + kor3 + " éves vagyok.") //a számot stringgé alakítja át a háttérben.
+
+const mostaniEvszam = 2021
+console.log(mostaniEvszam + "10") //stringgé konvertálja, így hozzáfűzi a 10-et a végeredményhez.
+
+const mostaniEvszam2 = 2021
+console.log(mostaniEvszam2 - "10") //elvégzi a műveletet, mert stringnél nincs kivonás, így számmá alakítja. MEgpróbálja kitalálni, hogy mit akarunk.
+
+// egyenlőségvizsgálatok:
+console.log("18" == 18) //stringet számmal hasonlít össze. Vmelyiket átkonvertálja a másik típusává.
+console.log("18" === 18) // itt már nézi a típust is, így false lesz az eredmény.
+
+// inkább mi konvertáljunk, ne hagyjuk a JavaScriptet, hogy magától konvertáljon!!!
+
+const kedvencSzam = Number(prompt("Mi  a kedvenc számod?")) //felugrik egy PopUp ablak, beírjuk a számot, amit elment változóba, aztán eltűnik az ablak.
+console.log(kedvencSzam, typeof kedvencSzam)
+
+if (kedvencSzam === 10) {
+    console.log("A 10 az egy jó kis szám.")
+}
+else if (kedvencSzam === 4) { //további vizsgálatot csinálunk
+    console.log("A 4 a legjobb szám.")
+} else {
+    console.log("Ez is szép szám, de a 10 szebb, a 4 pedig a legszebb! 😜")
+}
+
+if (kedvencSzam !== 4) { // ha a kedvencSzam nem egyenlő 4-gyel
+    console.log("Miért nem a 4 a kedvenc számod, te kis fütyike?! 😡")
+}
+
+const szam3 = Number(prompt("Adj meg egy számot 1 és 100 között!"))
+if (szam3 < 101 && szam3 > 0) {
+    console.log("Ez az! Ügyes!")
+} else {
+    console.log("Hülyegyerek, nem megmondtam, hogy 1 és 100 közötti számot adj meg?! 😡")
+}
+
+// feladat 2:
+// Piros csapat, Kék csapat
+// Piros csapat pontszámai: 96, 120, 88
+// Kék csapat pontszámai: 87, 101, 98
+// A három pontból átlagolni, eltárolni, aztán eldönteni, hogy melyik nagyobb, ezáltal ki a győztes.
+// Nyertes csapat nevét kiíratni vagy azt, hogy döntetlen.
+// Csak akkor van nyertes, ha az átlagpontszám legalább 100. Ha nincs meg ennyi, akkor nincs győztes.
+
+const pirosElso = 96
+const pirosMasodik = 120
+const pirosHarmadik = 88
+
+const kekElso = 87
+const kekMasodik = 101
+const kekHarmadik = 98
+
+pirosAtlag = (pirosElso + pirosMasodik + pirosHarmadik) / 3
+kekAtlag = (kekElso + kekMasodik + kekHarmadik) / 3
+
+console.log(`Piros csapat átlagpontszáma: ${pirosAtlag}`)
+console.log(`Kék csapat átlagpontszáma: ${kekAtlag}`)
+
+if (kekAtlag >= 100 && pirosAtlag >= 100) {
+    console.log(`A versenynek van nyertese.`)
+} else if (kekAtlag > pirosAtlag) {
+    console.log(`A kék csapat nyert, ${kekAtlag} átlagpontszámmal.`)
+} else if (pirosAtlag > kekAtlag) {
+    console.log(`A piros csapat nyert, ${pirosAtlag} átlagpontszámmal.`)
+} else {
+    console.log(`A versenynek nincs nyertese, mert a csapatok nem érték el a minimum 100 átlagpontot.`)
+}
+
+// vagy művelet: || - AltGr+W
+// és művelet: &&
+
+const osztalyzat = 5
+switch (osztalyzat) { // megnézi az értéket, eldönti, hogy melyik igaz rá. Ha nem igaz egyik sem, akkor a default fut le.
+    case 1:
+        console.log("Elégtelen")
+        break;
+    case 2:
+        console.log("Elégséges")
+        break;
+    case 3:
+        console.log("Közepes")
+        break;
+    case 4:
+        console.log("Jó")
+        break;
+    case 5:
+        console.log("Kiváló")
+        break;
+    default: // akkor fut le, ha nem jó osztályzatot adtunk meg.
+        console.log("Nem jó osztályzat!")
+}
+
+const eletKor4 = 41
+eletKor4 >= 18 ? console.log("Sört kérek!") : console.log("Vizet kérek!") // egy sorban fut le: feltétel ? igaz ág : hamis ág
+// ? - az igaz ág
+// : - a hamis ág
