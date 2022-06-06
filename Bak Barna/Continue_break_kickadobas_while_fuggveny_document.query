@@ -1,0 +1,245 @@
+/*
+let szulEv = [1990, 1995, 2000, 1998, 2005]
+let most = 2022
+
+for (let i = 0; i <= szulEv.length - 1; i++) {
+    console.log(most - szulEv[i]) // mindig az aktuális eleme vonja ki a most változó értékéből, majd ki is írja.
+}
+
+*/
+// Continue, Break:
+
+/*
+
+for (let i = 1; i <= 20; i++) {
+    if (i % 2 !== 0) {
+        continue // csak a páros számokat írja ki, páratlan számoknál tovább ugrik a következő "i"-re.
+    }
+    console.log(i)
+    if (i === 16) {
+        break // 16 után kilép a ciklusból
+    }
+}
+
+*/
+
+// 3-tól visszaszámlálás 0-ig:
+
+/*
+for (let i = 3; i > 0; i--) { // 3-ról indulunk, mindig egyel csökken az "i" értéke.
+    console.log(i)
+}
+
+*/
+
+// While ciklus: addig fut le a ciklus, amíg igaz a feltétel
+
+// bekérünk egy választ, a ciklus addig fut, amíg nem a megfelelő választ kapja.
+
+/*
+let valasz = ""
+while (valasz != "igen") {
+    valasz = prompt("Igen vagy nem?")
+}
+
+*/
+
+// for ciklusnál mindig tudjuk, hgy hányszor fog lefutni, a while-nál nem tudjuk előre.
+
+// Random számok:
+
+/*
+console.log(Math.random()) // csinál egy számot 0 és 1 között, az 1 már nem lesz benne.
+
+
+// 0 és 10 közötti szám generálása:
+console.log(Math.random() * 10) // 0 és 10 közötti szám lesz, de a 10 nem lesz
+
+// tizedesjegyek levágása:
+console.log(Math.trunc(Math.random() * 10)) // "trunc" levágja a tizedesjegyeket, csak az egész szám marad
+
+//  0 és 100 közötti szám generálása:
+console.log(Math.trunc(Math.random() * 100))
+
+// 1 és 100 közötti szám generálása:
+console.log(Math.trunc(Math.random() * 100) + 1) // a "+1" miatt a "0" helyett "1"-től kezdi.
+
+// 1 és 6 közötti szám generálása:
+console.log(Math.trunc(Math.random() * 6) + 1) // 6 a felső határ. A szorzás utáni rész mondja meg azt, hogy melyik a felső határ, a "+" utáni szám pedig azt, hogy honnan kezdje.
+
+// 5 és 10 közötti szám generálása:
+console.log(Math.trunc(Math.random() * 6) + 5) // az "5" utáni "6" db szám közül lehet egy random szám.
+
+
+// változókkal 5 és 10 közötti szám generálása:
+
+let tol = 5
+let ig = 10
+console.log(Math.trunc(Math.random() * ig - tol + 1) + tol) // ez a szuperebb, sztem!!! :)
+
+*/
+
+/*
+
+let kockaDobas = Math.trunc(Math.random() * 6) + 1
+console.log(`Dobás: ${kockaDobas}`)
+let dobas = 1 // mert egyet már dobunk a legelején (feljebb)
+while (kockaDobas !== 6) {
+    kockaDobas = Math.trunc(Math.random() * 6) + 1
+    console.log(`Dobás: ${kockaDobas}`) // a cikluson belül kiíratva, látjuk, hogy hányadik dobásra, mennyit dob.
+    dobas++ // a dobas változó értéke nő mindig egyel
+}
+console.log(`${dobas}. dobásra sikerült 6-ot dobni.`)
+
+for (let i = 1; i <= 10; i++) { // 10-szer dobunk összesen
+    kockaDobas = Math.trunc(Math.random() * 6) + 1
+    console.log(`${i}.dobás: ${kockaDobas}`) // kiírjuk, hogy hányadik dobásra (i), milyen értéket (kockaDobas) dobtunk.
+}
+
+*/
+
+// OBJEKTUMOK A WEBFEJLESZTÉSBEN:
+
+// Objektumok - visszatekintő:
+/*
+let hans = {
+    nev: "Hans Miller",
+    eletKor: 30,
+    munka: "IT mérnök",
+
+    szulEv: function () {
+        return 2022 - this.eletKor;
+    }
+}
+
+console.log(hans.nev, hans.munka, hans.szulEv())
+
+*/
+
+/*
+function jsUdv() { // a html-ünkben van a button-nál
+    // alert("Szia KiCo!")
+    document.getElementById("udv").innerHTML = "Szia KiCo!" // kikeres egy elemet az id alapján, amit megadtunk. Itt az "udv" id-t. Inner html = "tartalma, tulajdonsága - ami a két tag (nyitó, záró) között szerepel". Vagy itt adunk neki értéket, mint pl most. :)
+}
+
+function jsIdo() {
+    document.getElementById("ido").innerHTML = Date() // A "Date" függvény jeleníti meg az időt, dátumot, időzónát.
+}
+
+function jsPopup() {
+    let szoveg = document.getElementById("szoveg").value // mivel nem tagek között van, hanem egy beviteli mező. A két "szoveg" nem ugyanaz! Az egyik egy változó, a másik az id a html-ből.
+    alert(szoveg)
+}
+
+function jsEltuntet() {
+    document.getElementById("eltuntet").innerHTML = "" // egy sima üres idézőjellel már nincs is tartalma. :)
+}
+
+function jsAtir() {
+    let szoveg2 = document.getElementById("atirSzoveg").value
+    document.getElementById("atir").innerHTML = szoveg2
+}
+
+function jsMeret(meret) {
+    if (meret === "nagy") {
+        document.getElementById("meret").style.fontSize = "32px" // html-ből a "meret" A "fontSize"-zal a betűméretet írjuk át.
+    }
+    else if (meret === "közepes") {
+        document.getElementById("meret").style.fontSize = "16px"
+    }
+    else if (meret === "kicsi") {
+        document.getElementById("meret").style.fontSize = "8px"
+    }
+
+}
+
+function jsEgerrelMeret(meret) {
+    if (meret === "nagy") {
+        document.getElementById("meretEger").style.fontSize = "32px"
+    }
+    else if (meret === "normál") {
+        document.getElementById("meretEger").style.fontSize = "16px"
+    }
+}
+
+function jsSzamologep() {
+    let elsoSzam = document.getElementById("elsoSzam").value
+    let muvelet = document.getElementById("muvelet").value
+    let masodikSzam = document.getElementById("masodikSzam").value
+
+    elsoSzam = Number(elsoSzam)
+    masodikSzam = Number(masodikSzam)
+
+
+    if (muvelet === "+") {
+        eredmeny = elsoSzam + masodikSzam
+    }
+    else if (muvelet === "-") {
+        eredmeny = elsoSzam - masodikSzam
+    }
+    else if (muvelet === "*") {
+        eredmeny = elsoSzam * masodikSzam
+    }
+    else if (muvelet === "/") {
+        eredmeny = elsoSzam / masodikSzam
+    }
+    document.getElementById("eredmeny").innerHTML = eredmeny
+}
+*/
+
+
+// 2022. 01. 10. JavaScript - 5. rész
+
+// Feladathoz: ezeket kell megcsinálni:
+
+// 1. Szám generálása 1-100
+// 2. Küldés gomb megcsinálása
+// 3. Tipp vizsgálata
+// 4. Tipp számlálása
+// 5. Újra játszás implementálása
+// 6. Rekord implementálás
+// 7. Súgó gomb implementálás
+
+// 1.:
+
+let gondoltSzam = Math.trunc((Math.random() * 100) + 1)
+// document.querySelector(".gondolt-szam").textContent = gondoltSzam // a querySelector-ban nem kell megadni, hogy id-t vagy class-t akarunk, csak az azonosítót. Kiíratjuk a ? helyére, amíg írjuk a programot.
+
+// 4.:
+
+let tippekSzama = 0
+
+
+// 2., 3.:
+
+document.querySelector(".gomb-kuld").addEventListener("click", function () {
+    let tipp = Number(document.querySelector(".tipp").value) // számként tároljuk el, hogy később tudjunk vele műveleteket végezni.
+    console.log(tipp)
+
+    if (tipp !== 0) {
+        tippekSzama++ // egyel növeljük a tippek számát
+        document.querySelector(".szoveg-tippek").textContent = `Tippek száma: ${tippekSzama}`
+        if (tipp > gondoltSzam) {
+            document.querySelector(".szoveg-info").textContent = "Túl nagy a szám."
+        }
+        else if (tipp < gondoltSzam) {
+            document.querySelector(".szoveg-info").textContent = "Túl kicsi a szám."
+        }
+        else if (tipp === gondoltSzam) {
+            document.querySelector(".szoveg-info").textContent = "Eltaláltad! 👍"
+            document.querySelector(".gondolt-szam").style.backgroundColor = "greenyellow"
+            document.querySelector(".gondolt-szam").textContent = gondoltSzam
+        }
+    } else {
+        document.querySelector(".szoveg-info").textContent = "1 és 100 közötti számot adj meg!"
+    }
+})
+
+
+document.querySelector(".gomb-ujra").addEventListener("click", function () {
+    document.querySelector(".szoveg-info").textContent = "-"
+    document.querySelector(".gondolt-szam").style.backgroundColor = "rgb(141,179,226)"
+    document.querySelector(".gondolt-szam").textContent = "?"
+    tippekSzama = 0
+    document.querySelector(".szoveg-tippek").textContent = `Tippek száma: ${tippekSzama}`
+    gondoltSzam = Math.trunc((Math.random() * 100) + 1)
