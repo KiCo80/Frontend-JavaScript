@@ -1,0 +1,64 @@
+JS FILE:
+
+function calcAmount()
+{
+    let ar=1000;
+    let mennyiseg = document.querySelector("input[name='mennyiseg']").value;
+    mennyiseg=parseInt(mennyiseg);
+    if (mennyiseg>10 || mennyiseg==0){
+        alert ("Maximum csak 10 lehet a mennyiség! Helyes darabszámot adj meg!")
+        let message=document.querySelector("span.message");
+        message.innerHTML="0";
+    }
+    else{    
+        let vegosszeg=mennyiseg*ar;
+        let message=document.querySelector("span.message");
+        message.innerHTML=vegosszeg;
+    }
+}
+
+
+CSS FILE:
+
+p.valaszok
+    {
+         padding-left   : 54px; 
+         padding-bottom : 24px;
+    }
+   
+
+HTML FILE:
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-os számolós feladat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <form name='szamol'>
+        <div>
+            <label for="termek" class="form-label">Termék</label>
+            <input type=text class="form-control" id="termek" name='termek'>
+        </div>
+        <br>
+        <div>
+            <label for="mennyiseg" class="form-control">Mennyiség</label>
+            <input type=number class="form-control" name='mennyiseg' value="1" required>
+        </div>
+                
+      <hr align=left>
+
+       Fizetendő:<span class="message">0</span>Ft
+
+         <p align='center'>
+            <input type=button name='gomb' value='Számolás' onclick="calcAmount();">
+         </p>
+
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
