@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tömbök, objektumok</title>
+</head>
+<body>
+    <script>
+        //Tömbök
+        let cars = ["Opel", "Ford", "Audi"];
+        //tömb bejárása for ciklussal
+        for (let i = 0; i < cars.length; i++) {
+            document.write(cars[i], ' ');
+        }
+
+        // for-in ciklus: indexeken megy végig
+        for (let car in cars) {
+            document.write(car, ' ');
+        }
+
+        // for-of ciklus: értékeken megy végig
+        for (let car of cars) {
+            document.write(car, ' ');
+        }
+
+        document.write('<br>');
+        //Objektumok: kulcs-érték párok ~python: szótár
+        let user = {
+            //property
+            name: "Kiss Béla",
+            age: 26,
+            city: "Budapest",
+            //method
+            sayHi: function () {
+                //return "Hi, " + this.name;
+                return `Hi, ${this.name} vagyok!`;
+            }
+        };
+        //keys: name, age, city
+        //values: Kiss Béla, 26, Budapest
+		/* Konzolon:
+		Object.keys(user);
+		Object.values(user);
+		Object.entries(user);
+        */
+		user.city;
+        user["name"];
+
+        for (let k in user) {
+            document.write(k, ' ', user[k], '<br>');
+        }
+
+    </script>
+</body>
+</html>
