@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paraméterátadás</title>
+</head>
+<body>
+    <h1>Paraméterátadás</h1>
+    <script>
+        //Érték szerinti paraméterátadás: a fv létrehoz egy új változót és abba bemásolja az értéket
+        //Primitív változók
+        let v1 = 10, v2 = 20;
+        function changeValue(one, two) {
+            one = 100;
+            two = 200;
+            document.write('From Function: ' + one + ' ' + two + '<br>')
+        }
+        changeValue(v1, v2); // 100 200
+        document.write('v1: ' + v1 + ' v2: ' + v2 +'<br>'); // 10 20
+
+        //Referencia (cím) szerinti paraméterátadás: a memóriacímet adja át
+        let fruits = ["apple", "pear", "banana"];
+        function callByRef(arr) {
+            arr[0] = 100;
+            document.write('From function: ' + arr + '<br>');
+        }
+        callByRef(fruits);
+        document.write('Fruits: ' + fruits + '<br>');
+
+
+    </script>
+</body>
+</html>
