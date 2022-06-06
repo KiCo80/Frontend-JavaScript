@@ -1,0 +1,89 @@
+/* komment!!!
+
+console.log(`Hello KiCo!`)
+let szam;
+szam = Number(prompt(`Kérek egy számot!`)); //amit a prompt-tal kérünk be, az mindig string típusú lesz.
+console.log(szam)
+console.log(typeof szam)
+*/
+/*
+if (szam % 2 === 0) { //JS-ben 3db ===-t kell használni!
+    alert(`A megadott szám páros.`)
+} else {
+    alert(`A megadott szám páratlan.`)
+}
+*/
+/*
+"use strict"; //komolyabban veszi a szintaxist!
+
+let szam1 = 4
+if (szam1 < 10) {
+    szem1 = 20
+}
+
+let interface = 20
+
+console.log(szam1)
+*/
+/*
+// háromszöges feladat:
+let a
+let b
+let c
+
+a = Number(prompt(`Kérem a háromszög a oldalát! a=`))
+b = Number(prompt(`Kérem a háromszög b oldalát! b=`))
+c = Number(prompt(`Kérem a háromszög c oldalát! c=`))
+
+if (a < b + c && b < c + a && c < a + b) {
+    if (a === b && b === c && a === c) {
+        alert(`Ez egy egyenlő oldalú háromszög.`)
+    } else if (a === b || b === c || a === c) {
+        alert(`Ez egy egyenlő szárú háomszög.`)
+    } else {
+        alert(`Ez csak egy általános háromszög.`)
+    }
+} else {
+    alert(`Ez nem is háromszög, öcskös! 😕`)
+}
+*/
+/*
+//Függyvény: A függyvény egy program egy nagyobb programon belül. Bemegy valami, majd kijön valami.
+function karacsony() { // függvény létrehozása
+    alert(`🎄 🎁 ✨`) // nem történik semmi!
+} // ez egy procedúra, ez azt jelenti, hogy ennek a függvénynek nincs visszatérési értéke.
+
+karacsony() // meghívjuk a függvény, így már megjelenik a popup ablak.
+karacsony() // csak egyszer írjuk meg, de annyiszor használjuk, ahányszor szeretnénk.
+karacsony()
+*/
+/*
+//Négyzetfüggvény:
+function negyzet(szam) { // a "szam" a bemeneti érték
+    return szam ** 2 // alert(szam ** 2) // de ezt így nem tudjuk eltárolni, ezért ha szeretnénk később dolgozni az eredménnyel, akkor "return"-t használunk.
+}
+negyzet(2) //mivel egy számot vár a program, ide beírunk egy számot, aminek a négyzete lesz a kimeneti érték.
+negyzet(3)
+negyzet(-9)
+
+let szam = Number(prompt(`Kérek egy számot!`))
+let negyzetSzam = negyzet(szam)
+alert(negyzetSzam)
+*/
+/*
+function darabolo(gyumolcs) {
+    return gyumolcs * 4
+}
+
+function turmix(alma, narancs) {
+    let almaDarabok = darabolo(alma)
+    let narancsDarabok = darabolo(narancs)
+    let gyumolcsle = `Kész a gyümölcslé ${almaDarabok} almával és ${narancsDarabok} naranccsal.`
+    return gyumolcsle
+}
+
+alert(turmix(2, 6)) //első érték az almák, vessző után pedig a második értél a narancs.
+*/
+
+
+
