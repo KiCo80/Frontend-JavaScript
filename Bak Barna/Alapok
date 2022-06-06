@@ -1,0 +1,25 @@
+/*
+alert("Hello KiCo")
+*/
+console.log("Hali KiCo")
+console.log(52 + 12)
+let keresztNev = "KiCo"
+console.log(keresztNev)
+console.log(keresztNev)
+console.log(keresztNev)
+let kor = 30
+let eletkor
+let eldontes = true
+
+/*
+Változók értékének további típusai:
+
+Undefined
+Null
+SymbolBigInt
+*/
+
+console.log(typeof (keresztNev))
+console.log(typeof (eldontes))
+console.log(typeof (kor))
+console.log(typeof (eletkor))
