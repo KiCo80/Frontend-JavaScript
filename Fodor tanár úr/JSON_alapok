@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON példák</title>
+  <style>
+    
+  </style>
+</head>
+
+<body>
+
+  <h1>JSON példák</h1>
+
+  <?php
+  
+    $jsonobj='{"name": "Ágnes", "age": "23", "city": "Győr"}'; // 3 kulcs - érték pár van ebben a JSon objektumban.
+
+    $array = json_decode($jsonobj, true); // a true esetében asszociatív tömbbé fogja kódolni a tömböt. False esetében pedig objektummá alakítja. Alapértelmezett a false, nem kell beírni, ha ezt szeretnénk.
+
+    echo '<pre>';
+    echo print_r($jsonobj, true); // a true miatt nem írja ki a sor végére az 1-et.
+    echo '<br>';
+    echo print_r($array, true); // asszociatív tömbként íratjuk ki
+    echo '</pre>';
+    
+    $obj = json_decode($jsonobj, false); // false miatt objektumként íratjuk ki
+    echo '<pre>';
+    echo print_r($obj, true); 
+    echo '</pre>';
+
+    echo $obj->name;
+    echo ' '; // szóközt tesz közé
+    echo $obj->age;
+    echo ' ';
+    echo $obj->city;
+    echo '<br>';
+    
+    $user = '[
+        {"name": "Ágnes", "age": "23", "city": "Győr"},
+        {"name": "Béla", "age": "48", "city": "Budapest"},
+        {"name": "János", "age": "36", "city": "Pécs"},
+        {"name": "Judit", "age": "38", "city": "Győr"}
+        ]'; // ezt így egy az egyben betehtnénk egy json file-ba. Az xml is hasonló, csak tagek között adjuk meg az adatokat, pl: <name>Ágnes</name> és <age>23</age> - tagek közt az érték. Ha kötött a formátum, akkor az xml-t használjuk.
+
+        $jsonUser = json_decode($user, false);
+        
+        echo '<h2>Kiíratás foreach-csel tömbként:</h2>';
+
+        foreach($jsonUser as $obj2) { // $jsonUser sorain megy végig, a sorokat beteszi a $obj2 változóba
+
+            echo $obj2->name; // a $obj2 name-hez tartozó értéket írja ki
+            echo ' ';
+            echo $obj2->age;
+            echo ' ';
+            echo $obj2->city;
+            echo '<br>';
+        }
+
+        foreach($jsonUser as $key=>$value){
+            echo $key;
+            echo ': ';
+            echo $value->name; // itt a value az első sor lesz
+            echo '<br>';
+        }
+
+        echo '<h2>JSON file feldolgozása:</h2>';
+
+        $getFile = file_get_contents("./users.json"); // file beolvasása a $getFile változóba a file_get_contents függvénnyel. A ./ azt jelenti, hogy ugyanabban a mappában van, mint az index.php file.
+        $data = json_decode($getFile, false);
+
+        echo '<pre>';
+        echo print_r($data, true);  // kiíratjuk a json file tartalmát
+        echo '</pre>';
+
+        echo '<h2>JSON file kiíratása foreach-csel:</h2>';
+
+       foreach($data->user as $obj){
+            echo $obj->name;
+            echo ' ';
+            echo '<br>'; // a <br> miatt egymás alá írja ki
+        }
+  ?>
+  
+</body>
+
+</html>
+
+
+users.json:
+
+{
+    "user": [
+        {
+            "name": "Ágota",
+            "age": "23",
+            "city": "Győr"
+        },
+        {
+            "name": "Barnabás",
+            "age": "48",
+            "city": "Budapest"
+        },
+        {
+            "name": "Jenő",
+            "age": "36",
+            "city": "Pécs"
+        },
+        {
+            "name": "Janka",
+            "age": "38",
+            "city": "Győr"
+        }
+    ]
+} 
+
