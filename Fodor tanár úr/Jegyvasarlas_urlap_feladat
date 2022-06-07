@@ -1,0 +1,206 @@
+HTML FILE:
+
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jegyvásárlás</title>
+    
+    <style>
+        body{
+          width: 60%;
+          margin: 5% 20%;
+          line-height: 25px;
+        }
+        
+        h1{
+          color: rgb(27, 79, 190);
+          
+        }
+        form{
+          border: 2px solid grey;
+          border-radius: 5px;
+          padding: 10px;
+        }
+        label{
+          margin-left: 30px;
+          color: rgb(41, 41, 83);     
+        }    
+        input[type=number]{
+          margin-right: 10px;
+          color: rgb(63, 112, 35);
+          width: 200px;
+          line-height: 12px;      
+        }
+        select{
+          margin-right:10px;
+          width: 200px;
+          line-height: 12px;      
+        }
+        input[type=button]{
+          margin-top: 30px;
+          color: rgb(13, 14, 13);      
+        }
+        #gomb{
+          text-align: center;
+        }
+        button{
+          background-color: blue;
+          color: white;
+        }
+        #fizetendo{
+          color: red;
+          font-weight: bold;
+        }
+      </style>
+
+</head>
+
+<body>
+    <form name="jegyvasarlas">
+        <h1>Jegyrendelés</h1>
+
+        <label for="tavolsag">Távolság:</label>
+        <input type="number" id="tavolsag" name="tavolsag"> km
+        <br>
+        <label for="osztaly">Osztály:</label>
+        <select name="osztaly" id="osztaly" onclick="removeOsztalyOption(), osztalyValasztas();">
+            <option value="">Válassz osztályt!</option>
+        </select>
+        <br>
+        <label for="kedvezmeny">Kedvezmény:</label>
+        <select name="kedvezmeny" id="kedvezmeny" onclick="removeKedvezmenyOption(), kedvezmenyValasztas();">
+            <option value="">Válassz kedvezményt!</option>
+        </select>
+        <br>
+        
+    </form>
+    <div id="gomb">
+        <button onclick="ellenorzes();">Számolás</button>
+    </div>
+    <hr>
+
+    <label for="fizetendo">Fizetendő:</label>
+    <span id="fizetendo"></span> Ft
+
+
+    <script src="jegyvasarlas_js.js"></script>
+</body>
+</html>
+
+
+JS FILE:
+
+let osztalyObj=[
+    {szint: "1. osztály", ar:""},
+    {szint: "2. osztály", ar:"35"}]
+
+let kedvezmenyObj = [
+    {mertek: "Teljesárú", szorzo:"1"},
+    {mertek: "50%", szorzo:"0.5"},
+    {mertek: "90%", szorzo:"0.9"}]
+
+function removeOsztalyOption() {
+    let osztalySelect = document.querySelector("#osztaly");
+    if (osztalySelect.length>1){
+        for (let i = osztalySelect.options.length; i>1; i--) {
+        osztalySelect.options[i].remove();
+        }
+    }
+}
+
+function removeKedvezmenyOption(){
+    let kedvezmenySelect=document.querySelector("#kedvezmeny");
+    if (kedvezmenySelect.length>1){
+        for(let i=kedvezmenySelect.options.length; i>1; i--){
+        kedvezmenySelect.options[i].remove();
+        }
+    }
+}
+
+function osztalyValasztas(){
+
+    let osztaly=document.querySelector('#osztaly');
+    document.jegyvasarlas.osztaly.options[0].text="";
+    for(i=0; i<osztalyObj.length; i++) {
+        let option=document.createElement("option");
+        option.id = "osztaly" + i;
+        osztaly.appendChild(option);
+        option.innerHTML=Object.values(osztalyObj[i])[0];
+        document.jegyvasarlas.osztaly.selectedIndex=0
+    }
+    
+     
+}
+
+function kedvezmenyValasztas(){
+
+    let kedvezmeny=document.querySelector('#kedvezmeny');
+    document.jegyvasarlas.kedvezmeny.options[0].text="";
+    for(i=0; i<kedvezmenyObj.length; i++){
+        let option=document.createElement("option");
+        option.id = "kedvezmeny" + i;
+        kedvezmeny.appendChild(option);
+        option.innerHTML=Object.values(kedvezmenyObj[i])[0];
+        document.jegyvasarlas.kedvezmeny.selectedIndex=0
+    }
+}
+
+function ellenorzes(){
+
+    let input=document.jegyvasarlas.querySelector("#tavolsag");
+
+    let selectek=document.jegyvasarlas.querySelectorAll("select");
+
+    let selectTomb=[];
+
+    for (let i = 0; i < selectek.length; i++) {
+        if (selectek[i].value==""){
+            selectTomb+=selectek[i].id+"\n"
+        }  
+        else{
+            selectTomb.count=0;
+        }
+    }
+    if (input.value!="" && selectTomb.count==0){
+        szamol();
+    }
+    else{
+        alert("Minden mezőt tölts ki!");
+    }
+}
+
+function szamol(){       
+
+    let elsoOsztAr=Object.values(osztalyObj[1])[1]*1.5;   
+
+    let osztalyIndex = document.querySelector("#osztaly").options.selectedIndex;
+
+    if(document.jegyvasarlas.osztaly.value==Object.values(osztalyObj[0])[0]){
+       osztalySzorzo = Number(Object.values(osztalyObj[1])[1]*1.5);
+    }
+   
+    if(document.jegyvasarlas.osztaly.value==Object.values(osztalyObj[1])[0]){ 
+        osztalySzorzo = Number(Object.values(osztalyObj[1])[1]);
+    }
+    
+    if(document.jegyvasarlas.kedvezmeny.value==Object.values(kedvezmenyObj[0])[0]){
+        kedvezmenySzorzo = Number(Object.values(kedvezmenyObj[0])[1]);
+    }
+
+    if(document.jegyvasarlas.kedvezmeny.value==Object.values(kedvezmenyObj[1])[0]){
+        kedvezmenySzorzo = Number(Object.values(kedvezmenyObj[1])[1]);
+    }
+
+    if(document.jegyvasarlas.kedvezmeny.value==Object.values(kedvezmenyObj[2])[0]){
+        kedvezmenySzorzo = Number(Object.values(kedvezmenyObj[2])[1]);
+    }    
+
+    let eredmeny = Math.round(document.jegyvasarlas.tavolsag.value*osztalySzorzo*kedvezmenySzorzo);
+   
+
+    document.getElementById("fizetendo").innerHTML = eredmeny;
+}
