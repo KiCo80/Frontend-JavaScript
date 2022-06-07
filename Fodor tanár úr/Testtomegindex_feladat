@@ -1,0 +1,47 @@
+HTML FILE:
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTI</title>
+</head>
+<body>
+    <form>
+        <label for="suly">Testsúlyod:</label>
+        <input type="number" id = "suly" name = "suly" onkeyup="szamol()"> kg<br>
+        <label for="magassag">Magasságod:</label>
+        <input type="number" id = "magassag" name = "magassag" onkeyup="szamol()"> cm<br>
+        <hr>
+        <label for="tti">Testtömegindexed:</label>
+        <span id="ttiEredmeny"></span> kg/m2
+    </form>
+<script src="tti.js"></script>
+</body>
+</html>
+
+
+
+JS FILE:
+
+function szamol(){
+    let suly=document.getElementById("suly").value;
+    suly=parseInt(suly);   
+    let magassag=document.getElementById("magassag").value;
+    magassag=parseInt(magassag);
+    let tti=Math.round(suly/(Math.pow((magassag/100),2)),2);
+    let x = tti
+    document.getElementById("ttiEredmeny").innerHTML = tti;
+
+if (tti<18) {
+    document.getElementById("ttiEredmeny").style.backgroundColor = "yellow";    
+}
+else if (tti<=25 && tti >=18){
+    document.getElementById("ttiEredmeny").style.backgroundColor = "yellowgreen";    
+}
+else {    
+    document.getElementById("ttiEredmeny").style.backgroundColor="red"    
+}
+}
