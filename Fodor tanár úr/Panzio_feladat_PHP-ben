@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panzió</title>
+</head>
+<body>
+    <?php
+    $getFile = file_get_contents("./panzio.json");
+    $data = json_decode($getFile, false);
+
+    echo '<pre>';
+    echo print_r($data, true);
+    echo '</pre>';
+
+    echo '<h2>Szobák:</h2>';
+    
+    foreach($data->szobaTipus as $obj){
+        echo '<b>'.$obj->tipus.': '.$obj->ar.'</b>'; // ezekkel lehet variálni, izgalamas! :)
+        echo ': ';
+        echo $obj->ar;
+        echo ' Ft<br>';
+    }
+
+    echo '<h2>Ellátás:</h2>';
+    
+    foreach($data->ellatas as $obj){
+        echo $obj->tipus;
+        echo ': ';
+        echo $obj->ar;
+        echo ' Ft<br>';
+    }
+
+    echo '<h2>Fürdő:</h2>';
+    
+    foreach($data->furdo as $obj){
+        echo $obj->tipus;
+        echo ': ';
+        echo $obj->ar;
+        echo ' Ft<br>';
+    }
+
+    ?>
+</body>
+</html>
+
+
+panzio.json file:
+
+{
+    "szobaTipus": [
+        {
+            "tipus": "Egyágyas",
+            "ar": "9000",
+            "fo": "1"
+        },
+        {
+            "tipus": "Kétágyas",
+            "ar": "15000",
+            "fo": "2"
+        },
+        {
+            "tipus": "Kétágyas 1 pótággyal",
+            "ar": "18000",
+            "fo": "3"
+        },
+        {
+            "tipus": "Kétágyas 2 pótággyal",
+            "ar": "21000",
+            "fo": "4"
+        }
+    ],
+    "ellatas":[
+        {
+            "tipus": "Reggeli",
+            "ar": "900"
+        },
+        {
+            "tipus": "Félpanzió",
+            "ar": "2900"
+        },
+        {
+            "tipus": "Teljes panzió",
+            "ar": "4900"
+        }
+    ],
+    "furdo": [
+        {
+            "tipus": "Beltéri medencék",
+            "ar": "800"
+        },
+        {
+            "tipus": "Kültéri medencék",
+            "ar": "900"
+        },
+        {
+            "tipus": "Szauna belépő",
+            "ar": "1000"
+        },
+        {
+            "tipus": "Teljes belépő",
+            "ar": "2000"
+        }
+    ]
+}
