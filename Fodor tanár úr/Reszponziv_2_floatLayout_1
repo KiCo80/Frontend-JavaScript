@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Layout</title>
+
+<style>
+    *{
+        box-sizing: border-box; /* fixen annyi lesz a szélesség, amennyit megadunk, a padding és a tartalom miatt sem lesz nagyobb - w3schools-on box-sizing, első példa */
+    }
+    body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+        background-color: #f1f1f1;
+        padding: 15px;
+        text-align: center;
+    }
+    section{
+        /* height: 200px; */ /* azért állítjuk be, mert nincs tartalom. Amúgy sosem!!! Majd törölni kell, ha lesz tartalom! */
+        width: 100%;
+        padding: 15px;
+        /*float: left;*/
+    }
+    footer{
+        background-color: #f1f1f1;
+        padding: 15px;
+        text-align: center;
+        
+    }
+    @media screen and (min-width: 600px){
+        section{
+            width: 33.33%;
+            float: left; /* emiatt egymás mellé kerülnek a section-ök */
+        }
+        footer{
+            clear: both; /* ezzel megszűnik a float, emiatt a footer-t alá teszi */
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <header> <!-- fejrész -->
+        Header <!-- nem kell id, mert Header-ből csak egy van! -->
+    </header>
+
+<div class="row">
+    <section style="background-color: #aaa;">Column</section>
+    <section style="background-color: #bbb;">Column</section>
+    <section style="background-color: #ccc;">Column</section>
+    
+</div>
+<footer> <!-- lábrész -->
+    Footer
+</footer>
+
+</body>
+</html>
