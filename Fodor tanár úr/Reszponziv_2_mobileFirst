@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile first</title>
+
+    <style>
+        /* mobile first = mobilra készítjük először */
+        body{
+            background-color: blue;
+            font-size: 0.6em;
+        }
+        /* A kijelző szélessége 600 pixel vagy nagyobb */
+        @media screen and (min-width: 600px) { /* A minimum méretet adjuk meg a media-val */
+            body{
+                background-color:red;
+                font-size: 0.8em;
+            }
+        }
+
+        @media screen and (min-width: 800px) { 
+            body{
+                background-color:yellowgreen;                
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nobis ut voluptas voluptate illum tempora quis molestias. Recusandae, totam esse? Magni repudiandae temporibus vero, deserunt quia soluta eum dolor corrupti.
+    </p>
+</body>
+</html>
