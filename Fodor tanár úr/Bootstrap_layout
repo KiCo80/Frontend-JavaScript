@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css"> <!-- saját keretrendszer írása javallott!!! :) -->
+    <title>Bootstrap Layout</title>
+    <style>
+        .mycol{ /* saját osztályt csinálunk a "my" előtaggal */
+            height: 200px; /* csak a tesztelés idejéig állítunk be magasságot!!! */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="row"> <!-- csinálunk egy sort, majd egy soron belül osztjuk fel 3 részre -->
+              <div class="col-12 col-sm-12 col-lg-3 bg-primary mycol"> <!-- "col-sm-12" = ha eléri az sm méretetm akkor olyan lesz, mintha azt írnánk, hogy "col-12. Ha eléri az "lg" méretet, akkor "3" széles lesz -->
+                Column <!-- egyel feljebb a "mycol" kiszedhető, ha feltöltjük tartalommal :) -->
+              </div>
+              <div class="col-12 col-sm-6 col-lg-6 bg-success mycol"> <!-- a col-"szám" miatt lesz akkora a középső rész, a bootsptrap grid miatt -->
+                Column
+              </div>
+              <div class="col-12 col-sm-6 col-lg-3 bg-warning mycol"> <!-- a "warning" a szín! -->
+                Column
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>
