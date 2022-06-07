@@ -1,0 +1,92 @@
+HTML FILE:
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style_tablazat.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Táblázat</title>
+<style>
+    
+    #container{
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+</style>
+
+</head>
+<body>
+<div id="container"> <!-- "#container" beírásakor, majd ENTER nyomásakor automatikusan létrehoz egy div-et, "container" azonosítóval. -->
+    <table class="table">
+        <thead>
+          <tr>            
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>4</td>
+          </tr> -->
+         
+        </tbody>
+      </table>
+</div>
+<script src="tablazat.js"></script>
+</body>
+</html>
+
+
+JS FILE:
+
+let users = [ // létrehozunk egy tömböt
+{fname: "Otto", laname: "Mark", age:89}, // ALT + SHIFT+le nyíl = teljes sort másol
+{fname: "Eszter", laname: "Terp", age:82}, 
+{fname: "Pál", laname: "Kala", age:76}, 
+{fname: "Zoltán", laname: "Pofá", age:77},
+{fname: "Kozsó", laname: "Homo", age:81}, 
+{fname: "Rudi", laname: "Buzi", age:85} 
+];
+// ezzel készen is van egy JSon file, a JSon file így néz ki :)
+
+let tableBody=document.querySelector("tbody"); // ha nem változó, akkor mindig ""-be kell tenni
+
+
+/*
+for (let k in users){ // "for-in" ciklussal megyünk végig a tömb elemein (amik objektumok)
+    let tr =document.createElement("tr");
+    let td =document.createElement("td");
+    td.innerHTML=k;
+    tr.appendChild(td);
+    tableBody.appendChild(tr);
+}
+*/
+
+function createTd(html, parent){ // a html = innerHtml (tartalom), a parent = szülő objektum
+    let td=document.createElement("td");
+    td.innerHTML=html;
+    parent.appendChild(td); // itt már változó a td
+}
+
+for (let k in users){
+    let tr = document.createElement("tr");
+    for (let value of Object.values(users[k])){ // "for-of" ciklussal megyünk végig
+        createTd(value, tr); // a "tr" itt változó        
+    }
+        tableBody.appendChild(tr);
+}
+
+// ezt kell beírni a Konzolba pl.:
+// Object.values(users[1])[0];
+
+
+// hf: Infojegyzet.hu - Feladatok - szorzótábla (56. oldal)
+// hf-hoz: td.className=...
