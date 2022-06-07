@@ -1,0 +1,299 @@
+HTML FILE:
+
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Útiköltség elszámolás</title>
+  <style>
+    body{
+      width: 60%;
+      margin: 5% 20%;
+      line-height: 25px;
+    }
+    p{
+      padding-left: 40px;
+    }
+    h1{
+      color: rgb(63, 78, 110);
+      text-align: center;
+    }
+    form{
+      border: 2px solid grey;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    label{
+      margin-left: 30px;
+      color: rgb(41, 41, 83);     
+    }    
+    input[type=text], [type=number], [type=date]{
+      margin-right: 10px;
+      color: rgb(63, 112, 35);
+      width: 200px;
+      line-height: 12px;      
+    }
+    select{
+      margin-right:10px;
+      width: 200px;
+      line-height: 12px;      
+    }
+    input[type=button]{
+      margin-top: 30px;
+      color: green;      
+    }
+    a{
+      color: blue;
+    }
+    #alairas{
+      text-align: center;
+    }
+    @media screen{    
+	    .nyomtatni
+	    {
+	        display :  none ;
+	    }
+	  }
+    @media print{    
+	    input[type=button], .nemnyomtat
+	    {
+	        display :  none ;
+	    }
+	  }
+    
+  </style>
+</head>
+
+<body>
+
+<form name="elszamolas">
+
+    <h1>Útiköltség elszámolás</h1>
+    
+    <h3>Személyes adatok</h3>
+
+    <label for="nev">Név:</label>
+    <input type="text" name="nev" id="Név" size="30">
+    <br>
+    <label for="lakcim">Lakcím:</label>
+    <input type="text" name="lakcim" id="Lakcím">
+    <br>
+    <label for="szuldatum">Születési dátum:</label>
+    <input type="date" name="szuldatum" placeholder="év. hónap. nap." id="Születési dátum">
+    <br>
+
+    <h3>Gépjármű- és üzemanyagadatok</h3>
+
+    <label for="gepjarmu">Gépjármű gyártmánya, típusa:</label>
+    <input type="text" name="gepjarmu" id="Gépjármű gyártmánya, típusa">
+    <br>
+    <label for="uzemanyagfajtaja">Üzemanyag fajtája:</label>
+    <select name='uzemanyagfajtaja' size='1' id="uzemanyagfajtata" onchange="removeAllOption(), fogyasztas();">
+        <option value="nulla">Válassz üzemanyagot!</option>
+        <option value="benzin">Benzin</option>
+        <option value="gazolaj">Gázolaj</option>
+    </select>
+    <br>
+    <label for="fogyasztasinorma">Fogyasztási norma:</label>
+    <select name='fogyasztasinorma' id="fogyasztasinorma" onclick="figyelmeztetes();">
+        <option value="0"></option>
+    </select>
+    <br>
+    <label for="utazasdatuma">Utazás dátuma:</label>
+    <input type="date" name="utazasdatuma" placeholder="év. hónap. nap." id="Utazás dátuma">
+    <br>
+    <label for="uzemanyagara">Üzemanyag egységára:</label>
+    <input type="number" name="uzemanyagara" id="Üzemanyag egységára">Ft/l
+    <br>
+
+    <p class="nemnyomtat">Forrás: <a href="https://nav.gov.hu/ugyfeliranytu/uzemanyag/" target="_blank">https://nav.gov.hu/ugyfeliranytu/uzemanyag/</a></p>
+
+    <h3>A megtett út adatai</h3>
+
+    <label for="kiindulasihely">Kiindulási hely:</label>
+    <input type="text" name="kiindulasihely" id="Kiindulási hely">
+    <br>
+    <label for="uticel">Úticél:</label>
+    <input type="text" name="uticel" id="Úticél">
+    <br>
+    <label for="tovabbiuticel">További úticél:</label>
+    <input type="text" name="tovabbiuticel" id="További úticél">
+    <br>
+    <label for="osszestavolsag">Összes megtett távolság Google Maps alapján:</label>
+    <input type="number" name="osszestavolsag" id="Összes megtett távolság"> km
+    <br>
+    <input type="button" value="Ellenőrzés és számítás" name="szamolas" onclick="ellenorzes()">
+
+</form>
+<br>
+<form name="osszegek">
+    <label for="utikoltseg">Útiköltség:</label>
+    <input type="number" name="utikoltseg" disabled> Ft
+    <br>
+    <label for="amortizacio">Amortizáció:</label>
+    <input type="number" name="amortizacio" disabled> Ft
+    <br>
+    <label for="osszeskoltseg"><b>Összes elszámolható költség:</b></label>
+    <input type="number" name="osszeskoltseg" disabled> Ft
+    <br>
+    <input type="button" value="Nyomtatás" name="nyomtatas" onclick="window.print()" disabled>
+</form>  
+
+<br>
+
+<div class="nyomtatni" id="datum">
+  <label for="datum"> Dátum:</label>
+</div>
+<br>
+<div class="nyomtatni" id="alairas">
+  <label for="alairas" text-align="center">Aláírás:</label>
+</div>
+
+<script src="utikoltsegelszamolo.js"></script>
+
+</body>
+
+</html>
+
+
+JS FILE:
+
+let benzinFogyasztas = [
+    {henger : "1000 cm3-ig", fogyasztas: 7.6, egyseg: "l/100km"},
+    {henger: "1001-1500 cm3 között", fogyasztas: 8.6, egyseg:"l/100km"},
+    {henger: "1501-2000 cm3 között", fogyasztas: 9.5, egyseg: "l/100km"},
+    {henger: "2001-3000 cm3 között", fogyasztas: 11.4, egyseg: "l/100km" },
+    {henger: "3001 cm3 fölött", fogyasztas: 13.3, egyseg: "l/100km"}
+];
+
+let gazolajFogyasztas=[
+    {henger: "1500 cm3-ig", fogyasztas: 5.7, egyseg: "l/100km"},
+    {henger: "1501-2000 cm3 között", fogyasztas: 6.7, egyseg: "l/100km"},
+    {henger: "2001-3000 cm3 között", fogyasztas: 7.6, egyseg: "l/100km"},
+    {henger: "3001 cm3 fölött", fogyasztas: 9.5, egyseg: "l/100km"}
+];
+
+function removeAllOption() {
+    let normaSelect = document.querySelector("#fogyasztasinorma");
+    if (document.elszamolas.fogyasztasinorma.options.length>1){
+        for (let i = normaSelect.options.length - 1; i >= 1; i--) {
+        normaSelect.options[i].remove();
+        }
+    }
+}
+
+function fogyasztas(){
+
+    if(document.elszamolas.uzemanyagfajtaja.value=="benzin"){
+
+        let fogyasztas=document.querySelector('#fogyasztasinorma');
+
+        document.elszamolas.fogyasztasinorma.options[0].text="";
+
+        for(i=0; i<benzinFogyasztas.length; i++) {
+            let option=document.createElement("option");
+            option.id = "benzinfogy" + i;
+            fogyasztas.appendChild(option);
+            option.innerHTML=Object.values(benzinFogyasztas[i])[0]+" - "+Object.values(benzinFogyasztas[i])[1]+" "+Object.values(benzinFogyasztas[i])[2];
+            document.elszamolas.fogyasztasinorma.selectedIndex=0
+        }
+    }
+    else if(document.elszamolas.uzemanyagfajtaja.value=="gazolaj"){
+
+        let fogyasztas=document.querySelector('#fogyasztasinorma');
+
+        document.elszamolas.fogyasztasinorma.options[0].text="";
+
+        for(i=0; i<gazolajFogyasztas.length; i++) {
+            let option=document.createElement("option");
+            option.id = "gazolajfogy" + i;
+            fogyasztas.appendChild(option);
+            option.innerHTML=Object.values(gazolajFogyasztas[i])[0]+" - "+Object.values(gazolajFogyasztas[i])[1]+" "+Object.values(gazolajFogyasztas[i])[2];
+            document.elszamolas.fogyasztasinorma.selectedIndex=0
+        }
+    }
+}
+
+function figyelmeztetes(){
+    if(document.elszamolas.uzemanyagfajtaja.value=="nulla"){
+    alert("Válassz üzemanyagot!");
+    }
+}
+
+function ellenorzes(){
+
+    let inputok=document.elszamolas.querySelectorAll("input[type='text'], input[type='number'], input[type='date']");
+
+    let inputTomb=[];
+
+    for (let i = 0; i < inputok.length; i++) {
+        if (inputok[i].value==""){ 
+            inputTomb+=inputok[i].id+"\n"
+        }
+        else{
+            inputTomb.count=0;
+        }
+    }
+    
+    let selectek=document.elszamolas.querySelectorAll("select");
+
+    let selectTomb=[];
+
+    for (let i = 0; i < selectek.length; i++) {
+        if (selectek[i].value=="nulla"){
+            selectTomb+="Üzemanyag fajtája"+"\n"
+        }  
+        else if(selectek[i].value==0){
+            selectTomb+="Fogyasztási norma"+"\n"
+        }
+        else{
+            selectTomb.count=0;
+        }
+    }
+
+    if (inputTomb.count==0 && selectTomb.count==0){
+        szamol();
+    }
+    
+    else{
+        alert("Az alábbi mezők kitöltése kötelező: "+ "\n"+"\n"+(inputTomb)+(selectTomb));
+    }
+}
+
+function szamol(){       
+
+    let normaindex = document.querySelector("#fogyasztasinorma").options.selectedIndex;
+
+    if(document.elszamolas.uzemanyagfajtaja.value=="benzin"){
+
+        norma = Number(Object.values(benzinFogyasztas[normaindex-1])[1]);
+    }
+    if(document.elszamolas.uzemanyagfajtaja.value=="gazolaj"){
+       
+        norma = Number(Object.values(gazolajFogyasztas[normaindex-1])[1]);
+    }
+    
+    document.osszegek.utikoltseg.value = Math.round(norma*document.elszamolas.uzemanyagara.value*document.elszamolas.osszestavolsag.value/100);
+    
+    document.osszegek.amortizacio.value=Math.round(document.elszamolas.osszestavolsag.value*15);
+    
+    document.osszegek.osszeskoltseg.value=Number(document.osszegek.utikoltseg.value)+Number(document.osszegek.amortizacio.value);
+
+    document.osszegek.nyomtatas.disabled = false;
+}
+
+
+
+SEGÍTSÉG TANÁR ÚRTÓL:
+1. törölni kell a korábbiakat, pl.:
+function removeAllOption() {
+    let normaSelect = document.querySelector("#fogyasztasinorma");
+    for (let i = normaSelect.options.length - 1; i >= 0; i--) {
+        normaSelect.options[i].remove();
+    }
+}
+2. az indexét tudod kiválaszani:
+let normaindex = document.querySelector("#fogyasztasinorma").options.selectedIndex;
+utána: norma = Number(Object.values(benzinFogyasztas[normaindex])[1]);
