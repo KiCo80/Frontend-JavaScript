@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Layout2</title>
+
+<style>
+    *{
+        box-sizing: border-box; /* fixen annyi lesz a szélesség, amennyit megadunk, a padding és a tartalom miatt sem lesz nagyobb - w3schools-on box-sizing, első példa */
+    }
+    body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+        background-color: #f1f1f1;
+        padding: 15px;
+        text-align: center;
+    }
+    section{
+        /* height: 200px; */ /* azért állítjuk be, mert nincs tartalom. Amúgy sosem!!! Majd törölni kell, ha lesz tartalom! */
+        width: 100%;
+        padding: 15px;
+        /*float: left;*/
+    }
+    .side{
+        background-color: yellowgreen;
+    }
+    .main{
+        background-color: grey;
+    }
+    footer{
+        background-color: #f1f1f1;
+        padding: 15px;
+        text-align: center;
+        
+    }
+    p::first-letter{ /* pszeudo elem CSS-ben: nem az egészre, csak annak egy részére lesz jellemző - itt az első karakterre*/
+        color: red;
+        font-size: 2em;
+    }
+
+    @media screen and (min-width: 600px){
+        .side{
+            width:25%;
+            float: left;
+            background-color: yellowgreen;
+        }
+        .main{
+            width: 50%;
+            float: left;
+            background-color: grey;
+        }
+        /* egyik lehetőség:
+        footer{
+            clear: both; /* ezzel megszűnik a float, emiatt a footer-t alá teszi 
+        }
+        */
+
+        .row::after{ /* pszeudo elem CSS-ben: nem az egészre, csak annak egy részére lesz jellemző - itt a "row" után - ez az ELEGÁNSABB megoldás */
+            clear: both;
+            content: "";
+            display: block;
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <header> <!-- fejrész -->
+        Header <!-- nem kell id, mert Header-ből csak egy van! -->
+    </header>
+
+<div class="row">
+    <section class="side">Column</section>
+    <section class="main">Column</section>
+    <section class="side">Column</section>
+    
+</div>
+<footer> <!-- lábrész -->
+    <p>
+        Footer - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam accusamus optio nobis perspiciatis magni repudiandae quas commodi unde harum iste, sequi incidunt atque, ducimus necessitatibus mollitia excepturi facilis dolorem possimus!
+    </p>
+</footer>
+
+</body>
+</html>
+
+
