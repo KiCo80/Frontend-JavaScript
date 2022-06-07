@@ -1,0 +1,47 @@
+HTML FILE:
+
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Színes golyók</title>
+    <style>
+        div.pont {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background-color: yellowgreen;
+            border-radius: 50%;
+            /* 50%-os kerekítéssel szabályos kör alakot kapunk */
+        }
+    </style>
+</head>
+
+<body onload=szinesGolyok()>
+    <!-- innen már betöltődik a függvény -->
+    <div id="szinesgolyok">
+        <!-- ide generáljuk a többi div-et -->
+
+    </div>
+    <script>
+
+        function szinesGolyok() {
+            for (let i = 0; i < 8; i++) {
+                let szin = Math.floor(Math.random() * 16777215).toString(16); // A 16 milliós szám azért van itt, mert ennyi a max generálható szín. Aztán stringgé alakítjuk a számot
+                let pontDiv = document.createElement("div");
+                let parent = document.querySelector("#szinesgolyok");
+                pontDiv.className = "pont";
+                pontDiv.style.backgroundColor = "#" + szin;
+                parent.appendChild(pontDiv);
+            }
+        }
+
+    </script>
+    <script src="szinesgolyok.js"></script>
+</body>
+
+</html>
+
