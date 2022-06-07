@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média</title>
+
+    <style>
+        body{
+            background-color: yellowgreen;
+        }
+        /* a @media-val kérdezzük le a monitor méretét */
+        /* media screen: monitort, mobil kijelzőt jelent, media print = nyomtató, media speech = felolvasó, media all (mindegyikre érvényes lesz) */
+        /* az alap stílus megadása után jön csak a media rész! */
+        @media screen and (max-width: 800px) { /* a kijelző max mérete 800 pixel lehet. Azért csak vízszintes méretet adunk meg, mert a mobilon csak fel és le görgetünk. */
+            body{
+                background-color: blue;
+                font-size: 0.8em;
+            }
+        }
+        @media screen and (max-width: 600px) { /* a kijelző max mérete 600 pixel lehet */
+        /* fontos, hogy a nagyobb mérettől haladjunk sorban a kisebb felé!!! */
+            body{
+                background-color: red;
+                font-size: 0.6em;
+            }
+        }
+
+/* ez a media rész a reszponzív lényege :) */
+
+    </style>
+    
+</head>
+<body>
+    <!-- ingyenes webtárhelyre regisztrálhatunk, úgy is tesztelhető, hogy jó-e -->
+   
+    <!--
+    reszponzív: a képernyő méretéhez igazítja a tartalmat
+    -->
+
+<p> <!-- beírjuk, hogy "lorem", aztán Enter :) -->
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas asperiores aliquam, necessitatibus repudiandae corporis alias hic, placeat esse nam iure maiores accusamus dignissimos. Nisi corporis est delectus distinctio aliquam quasi!
+</p>
+
+</body>
+</html>
