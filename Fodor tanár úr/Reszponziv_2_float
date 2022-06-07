@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+
+<style>
+    .left{
+        float: left;
+        margin: 10px; /* margin azért kell, hogty a szöveg ne érjen hozzá a képhez */
+    }
+    .right{
+        float: right;
+        margin: 10px; 
+    }
+</style>
+
+</head>
+
+<body>
+    <h1>Float property</h1>
+    <img src="bird1.jpg" alt="bird1" title="madár 1" class="right"> <!-- az 1. sz. madár kerül a jobb szélére, tőle egyel balra, de szintén a jobb oldalon a 4. sz. madár kerül-->
+    <img src="bird2.jpg" alt="bird2" title="madár 2" class="left">
+    <img src="bird3.jpg" alt="bird3" title="madár 3" class="left">
+    <img src="bird4.jpg" alt="bird4" title="madár 4" class="right">
+    <!-- ha "none"-ra állítjuk, akkor is beteszi jobbra -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt optio sunt inventore tempora eligendi laudantium tenetur, necessitatibus autem qui saepe nihil possimus exercitationem id maxime voluptates doloribus? Nam, quia rerum.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptatem qui commodi neque, officia modi doloremque in sequi. Cumque aspernatur est voluptates veniam voluptas repellat dicta eligendi amet perspiciatis corporis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, molestias veritatis! Dolores eaque accusantium consectetur sed dolorum, quia qui praesentium? Sed consequatur ea perferendis blanditiis est aperiam deleniti consequuntur quibusdam?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. A, quis voluptate necessitatibus asperiores facilis voluptates consectetur porro dolore voluptatibus, recusandae adipisci doloremque magni illo aliquam quasi quam blanditiis ratione quas.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad illo consequuntur quidem impedit similique nemo id neque quas voluptas molestias et tempora officiis nam aliquid ratione dolorum, fugit consequatur a?</p>
+</html>
