@@ -1,3 +1,154 @@
+HTML FILE:
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Számkitalálós játék</title>
+</head>
+
+<body>
+    <header>
+        <!--cím szekció-->
+        <section class="cim">
+            <button class="gomb gomb-ujra">Újra</button>
+            <h1>Melyik számra gondoltam?</h1>
+            <button class="gomb gomb-sugo">Súgó</button>
+        </section>
+        <!--szám szekció-->
+        <section class="szam">
+            <p class="gondolt-szam">?</p>
+
+            </sectiion>
+    </header>
+    <main>
+        <!--lehetne div is, de a main több infot tartalmaz. :)-->
+        <section class="bal">
+            <input class="tipp" type="number" placeholder="Tipp">
+            <button class="gomb gomb-kuld">Küld</button>
+        </section>
+        <section class="jobb">
+            <p>Tippelj!</p>
+            <p class="szoveg-intervallum">(1 és 100 között)</p>
+            <p class="szoveg-info">-</p> <!-- először még nem jelenik meg, hogy túl nagy vagy túl kicsi -->
+            <p class="szoveg-tippek">Tippek száma: 0</p>
+            <p class="szoveg-rekord">Rekord: 0</p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+CSS FILE:
+
+
+/*
+Betűtípus importálása a google fonts-ból: @ import paranccsal
+*/
+@import url("https://fonts.googleapis.com/css?family=Mochiy Pop P One");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Mochiy Pop P One";
+    color: rgb(23,54,93);
+}
+
+body {
+   
+    background-color: rgb(79,129,189);
+}
+
+h1 {
+    font-size: 2.5rem; /* rem: a böngésző alap betűtípusának annyiszorosa, amilyen számot írunk elé */
+}
+
+header {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+main {
+    height: 70vh;
+    display: flex;
+    justify-content: center; 
+}
+
+.cim {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.bal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 5px solid white;
+    width: 50vw;
+    padding-right: 20px;
+}
+
+.jobb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px; 
+    width: 50vw;
+    font-size: 1.5rem;
+}
+
+.gomb, .gondolt-szam, .tipp { /* egyszerre több class-t is módosíthatunk */
+    background-color: rgb(141,179,226);
+    font-size: 1.5rem;
+    border: 5px solid white;
+    padding: 0.5rem;
+    border-radius: 20px;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5); /* gomb árnyékolása */
+}
+
+.tipp {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.gondolt-szam {
+    margin-bottom: 0px;
+}
+
+.szoveg-intervallum {
+    font-size: 0.75rem;
+}
+
+.gomb:hover {
+    background-color: white;
+}
+
+.gomb:active { /* gomb benyomásakor */
+    background-color: rgb(197, 197, 197);
+    transform: scale(0.95); /* eredeti méret hány százaléka */
+}
+
+
+
+
+JS FILE:
+
+
 const balElem = document.querySelector(".bal")
 const jobbElem = document.querySelector(".jobb")
 const jatekos1Pontszam = document.querySelector(".jatekos1-pontszam")
