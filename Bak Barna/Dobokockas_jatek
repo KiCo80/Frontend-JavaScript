@@ -1,0 +1,223 @@
+HTML FILE:
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pig Game</title>
+</head>
+
+<body>
+    <main>
+        <section class="bal aktiv">
+            <h2 class="jatekos1-nev">Játékos 1</h2>
+            <h1 class="jatekos1-pontszam">0</h1>
+            <div class="jatekos1-kor">
+                <p>Kör</p>
+                <p class="jatekos1-kor-pontszam">0</p>
+            </div>
+        </section>
+        <section class="kozep">
+            <div class="menu">
+                <!--www.unicode-table.com-ról karakterek html kódjai -->
+                <button class="gomb ujra">&#8635;</button>
+                <button class="gomb sugo">?</button>
+            </div>
+            <img src="kocka-0.png" class="kocka" alt="">
+            <button class="gomb dobas">Dobás</button>
+            <button class="gomb tart">Tart</button>
+        </section>
+        <section class="jobb">
+            <h2 class="jatekos2-nev">Játékos 2</h2>
+            <h1 class="jatekos2-pontszam">0</h1>
+            <div class="jatekos2-kor">
+                <p>Kör</p>
+                <p class="jatekos2-kor-pontszam">0</p>
+            </div>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+CSS FILE:
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-image: linear-gradient(to top left, #ffea54 0%, #feaa2b 100%); /* színátmenetes háttér */
+    display: flex; /* a szekciókat egymás mellé rakjuk vele*/
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    display: flex; /* ezzel oszlopos elrendezésre kerültek a szekciók*/
+    height: 70vh;
+    width: 70vh;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+.jobb, .bal{
+    background-color: #fea92a80;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* az elemek közé ugyanannyi területet tesz be, amikor húzzuk szét a böngészőt */
+    align-items: center;
+}
+
+.kozep{
+    background-color: #feaa2b;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-right: 2px dotted black;
+    border-left: 2px dotted black;
+}
+
+.kocka{
+    width: 15vw;
+}
+
+.gomb {
+    padding: 0.5rem;
+    background-color: #ff7c0e;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.jatekos1-kor, .jatekos2-kor {
+    background-color:rgba(0,0,0,0.50); /* áttetsző fekete szín */
+    padding: 1rem 2rem 1rem 2rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gomb:hover{
+    background-color: #fd944e;
+}
+
+.gomb:active{
+    background-color: #ffffff4d;
+    transform: scale(0.95);
+}
+
+.aktiv{
+    background-color: #ff00006e;
+}
+
+
+
+JS FILE:
+
+
+const balElem = document.querySelector(".bal")
+const jobbElem = document.querySelector(".jobb")
+const jatekos1Pontszam = document.querySelector(".jatekos1-pontszam")
+const jatekos2Pontszam = document.querySelector(".jatekos2-pontszam")
+const jatekos1KorPontszam = document.querySelector(".jateko1-kor-pontszam")
+const jatekos2KorPontszam = document.querySelector(".jatekos2-kor-pontszam")
+const ujraGomb = document.querySelector(".ujra")
+const sugoGomb = document.querySelector(".sugo")
+const kockaElem = document.querySelector(".kocka")
+const dobasGomb = document.querySelector(".dobas")
+const tartGomb = document.querySelector(".tart")
+
+// 1. feladat: dobás
+// 1/1: Szám generálás 1-től 6-ig
+// 1/2: Megjelenítés a kockán
+// 1/3: Vizsgálni, hogy 1 lett-e vagy sem
+// 1/4: ha 1 lett, akkor a másik játékos jön
+// 1/5: ha nem, akkor adjuk hozzá a dobás értékét a pontszámaihoz
+// 2.: Tart gomb elkészítése
+// 2/1: Összpontszám hozzáadása
+// 2/2: Másik játékos
+// 3: 100 pont megvan-e?
+// 3/1: ha nincs: másik játékos
+// 3/2: ha megvan: játék vége
+// 4: Játékos váltása
+
+let korPont = 0
+let aktivJatekos = 1
+
+
+// 1:
+
+dobasGomb.addEventListener("click", function () {
+    let kockaDobas = Math.trunc(Math.random() * 6) + 1
+    console.log(kockaDobas) // amíg tesztelünk, addig a konzolba kiíratjuk a számokat
+    kockaElem.src = `kocka-${kockaDobas}.png` // a kockadobás eredményét jeleníti meg a kockán :-)
+    if (kockaDobas !== 1) {
+        korPont += kockaDobas
+        document.querySelector(`.jatekos${aktivJatekos}-kor-pontszam`).textContent = korPont
+    }
+    else {
+        jatekosValtas()
+    }
+})
+
+let jatekos1OsszPont = 0
+let jatekos2OsszPont = 0
+
+tartGomb.addEventListener("click", function () {
+    if (aktivJatekos == 1) {
+        jatekos1OsszPont += korPont // a játékos 1 eredményéhez adjuk hozzá a dobás értékét
+        jatekos1Pontszam.textContent = jatekos1OsszPont
+        if (jatekos1OsszPont >= 100) {
+            alert("Az 1-es játékos nyert!")
+        }
+    }
+    else {
+        jatekos2OsszPont += korPont
+        jatekos2OsszPont.textContent = jatekos2OsszPont
+        if (jatekos2Pontszam >= 100) {
+            alert("A 2-es játékos nyert!")
+        }
+    }
+    jatekosValtas()
+})
+
+function jatekosValtas() {
+    korPont = 0
+    document.querySelector(`.jatekos${aktivJatekos}-kor-pontszam`).textContent = korPont
+    if (aktivJatekos == 1) {
+        aktivJatekos = 2
+    }
+    else {
+        aktivJatekos = 1
+    }
+
+    balElem.classList.toggle("aktiv")
+    jobbElem.classList.toggle("aktiv")
+}
